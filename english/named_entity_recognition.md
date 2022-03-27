@@ -17,9 +17,11 @@ corpus tagged with four different entity types (PER, LOC, ORG, MISC). Models are
 
 | Model           | F1  |  Paper / Source | Code |
 | ------------- | :-----:| --- | --- |
+| ACE + document-context (Wang et al., 2021) | 94.6 | [Automated Concatenation of Embeddings for Structured Prediction](https://arxiv.org/pdf/2010.05006.pdf) | [Official](https://github.com/Alibaba-NLP/ACE)|
 | LUKE (Yamada et al., 2020) | 94.3 | [LUKE: Deep Contextualized Entity Representations with Entity-aware Self-attention](https://www.aclweb.org/anthology/2020.emnlp-main.523/) | [Official](https://github.com/studio-ousia/luke) |
+| CL-KL (Wang et al., 2021) | 93.85 | [Improving Named Entity Recognition by External Context Retrieving and Cooperative Learning](https://arxiv.org/abs/2105.03654) | [Official](https://github.com/Alibaba-NLP/CLNER)|
 | InferNER (Moemmur et al., 2021) | 93.76| [InferNER: an attentive model leveraging the sentence-level information for Named Entity Recognition in Microblogs](https://journals.flvc.org/FLAIRS/article/view/128538) | |
-| ACE + fine-tune (Wang et al., 2020) | 93.5 | [Automated Concatenation of Embeddings for Structured Prediction](https://arxiv.org/pdf/2010.05006.pdf) | [Official](https://github.com/Alibaba-NLP/ACE)|
+| ACE (Wang et al., 2021) | 93.6 | [Automated Concatenation of Embeddings for Structured Prediction](https://arxiv.org/pdf/2010.05006.pdf) | [Official](https://github.com/Alibaba-NLP/ACE)|
 | CNN Large + fine-tune (Baevski et al., 2019) | 93.5 | [Cloze-driven Pretraining of Self-attention Networks](https://arxiv.org/pdf/1903.07785.pdf) | |
 | RNN-CRF+Flair | 93.47 | [Improved Differentiable Architecture Search for Language Modeling and Named Entity Recognition](https://www.aclweb.org/anthology/D19-1367/) | |
 | CrossWeigh + Flair (Wang et al., 2019)♦ | 93.43 | [CrossWeigh: Training Named Entity Tagger from Imperfect Annotations](https://www.aclweb.org/anthology/D19-1519/) | [Official](https://github.com/ZihanWangKi/CrossWeigh) |
@@ -50,6 +52,7 @@ Links: [CoNLL++](https://github.com/ZihanWangKi/CrossWeigh) (including direct do
 
 | Model                                   |  F1   | Paper / Source                           | Code                                     |
 | --------------------------------------- | :---: | ---------------------------------------- | ---------------------------------------- |
+| CL-KL (Wang et al., 2021) | 94.81 | [Improving Named Entity Recognition by External Context Retrieving and Cooperative Learning](https://arxiv.org/abs/2105.03654) | [Official](https://github.com/Alibaba-NLP/CLNER)|
 | CrossWeigh + Flair (Wang et al., 2019)♦ | 94.28 | [CrossWeigh: Training Named Entity Tagger from Imperfect Annotations](https://www.aclweb.org/anthology/D19-1519/) | [Official](https://github.com/ZihanWangKi/CrossWeigh) |
 | Flair embeddings (Akbik et al., 2018)♦ | 93.89 | [Contextual String Embeddings for Sequence Labeling](https://drive.google.com/file/d/17yVpFA7MmXaQFTe-HDpZuqw9fJlmzg56/view) | [Flair framework](https://github.com/zalandoresearch/flair)
 | BiLSTM-CRF+ELMo (Peters et al., 2018) | 93.42 | [Deep contextualized word representations](https://arxiv.org/abs/1802.05365) | [AllenNLP Project](https://allennlp.org/elmo) [AllenNLP GitHub](https://github.com/allenai/allennlp) |
@@ -87,6 +90,7 @@ The [Ontonotes corpus v5](https://catalog.ldc.upenn.edu/docs/LDC2013T19/OntoNote
 
 | Model                                    |  F1   | Paper / Source                           | Code                                     |
 | ---------------------------------------- | :---: | ---------------------------------------- | ---------------------------------------- |
+| BERT+KVMN (Nie et al., 2020)    | 90.32 | [Improving Named Entity Recognition with Attentive Ensemble of Syntactic Information](https://aclanthology.org/2020.findings-emnlp.378/) | [Official](https://github.com/cuhksz-nlp/AESINER) |
 | Flair embeddings (Akbik et al., 2018)    | 89.71 | [Contextual String Embeddings for Sequence Labeling](http://aclweb.org/anthology/C18-1139) | [Official](https://github.com/zalandoresearch/flair) |
 | CVT + Multi-Task (Clark et al., 2018)    | 88.81 | [Semi-Supervised Sequence Modeling with Cross-View Training](https://arxiv.org/abs/1809.08370) | [Official](https://github.com/tensorflow/models/tree/master/research/cvt_text) |
 | Bi-LSTM-CRF + Lexical Features (Ghaddar and Langlais 2018) | 87.95 | [Robust Lexical Features for Improved Neural Network Named-Entity Recognition](https://arxiv.org/pdf/1806.03489.pdf) | [Official](https://github.com/ghaddarAbs/NER-with-LS) |
