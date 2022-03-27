@@ -8,6 +8,7 @@
 
 | | Model           | LAS |  UAS  |  Paper | Code | 
 | ----- | ------------- | :-----:| --- | --- | --- |
+| **Predicted POS** | PhoNLP (2021) | 79.11 | 85.47 | [PhoNLP: A joint multi-task learning model for Vietnamese part-of-speech tagging, named entity recognition and dependency parsing](https://aclanthology.org/2021.naacl-demos.1.pdf) | [Official](https://github.com/VinAIResearch/PhoNLP) |
 | **Predicted POS** | PhoBERT-base (2020) | 78.77 | 85.22 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) | [Official](https://github.com/VinAIResearch/PhoBERT) | 
 | **Predicted POS** | PhoBERT-large (2020) | 77.85 | 84.32 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) |  [Official](https://github.com/VinAIResearch/PhoBERT) | 
 | **Predicted POS** | Biaffine (2017) | 74.99 | 81.19 | [Deep Biaffine Attention for Neural Dependency Parsing](https://arxiv.org/abs/1611.01734) |  | 
@@ -31,10 +32,35 @@
 
 * Results for the BIST graph/transition-based parsers, MSTparser and MaltParser are reported in "[An empirical study for Vietnamese dependency parsing](http://www.aclweb.org/anthology/U16-1017)."
 
+## Intent detection and Slot filling
+### [PhoATIS](https://github.com/VinAIResearch/JointIDSF)
+* The first dataset for intent detection and slot filling for Vietnamese, based on the common ATIS benchmark in the flight booking domain. Data is localized (e.g. replacing slot values with Vietnamese-specific entities) to fit the context of flight booking in Vietnam.
+* Training set: 4478 sentences
+* Development set: 500 sentences
+* Test set: 893 sentences
+
+| Model           | Intent Acc. | Slot F1 | Sentence Acc.  |  Paper | Code | Note |
+| ------------- | :-----:| --- |--- |--- | --- | --- |
+| JointIDSF (2021) | 97.62 | 94.98 | 86.25 | [Intent Detection and Slot Filling for Vietnamese](https://arxiv.org/abs/2104.02021) | [Official](https://github.com/VinAIResearch/JointIDSF) | Text are automatically word-segmented using [RDRSegmenter](https://github.com/vncorenlp/VnCoreNLP)
+| JointBERT (2019) with PhoBERT encoder | 97.40 | 94.75 | 85.55 | [Intent Detection and Slot Filling for Vietnamese](https://arxiv.org/abs/2104.02021) | [Official](https://github.com/VinAIResearch/JointIDSF) | Text are automatically word-segmented using [RDRSegmenter](https://github.com/vncorenlp/VnCoreNLP)
+
 ## Machine translation
 
-### English-Vietnamese translation
-* Dataset is from [The IWSLT 2015 Evaluation Campaign](http://workshop2015.iwslt.org/downloads/proceeding.pdf), also be obtained from [https://github.com/tensorflow/nmt](https://github.com/tensorflow/nmt).
+### [PhoMT Dataset](https://aclanthology.org/2021.emnlp-main.369/)
+* A large-scale and high-quality dataset for Vietnamese-English Machine Translation with 3.02M sentence pairs, available at [https://github.com/VinAIResearch/PhoMT](https://github.com/VinAIResearch/PhoMT).
+  * Consists of 6 domains: TED Talks, WikiHow, MediaWiki, OpenSubtitles, News and Blog.
+  * Training set: 2.9M sentence pairs
+  * Validation set: 18719 sentence pairs
+  * Test set: 19151 sentence pairs
+
+| Model           | EN-VI (BLEU) | VI-EN (BLEU) |  Paper | Code | 
+| ------------- | :-----:| :-----:| --- | --- | 
+| mBART (2020) | 43.46 | 39.78 | [Multilingual Denoising Pre-training for Neural Machine Translation](https://arxiv.org/abs/2001.08210) | [Link](https://github.com/pytorch/fairseq/tree/main/examples/mbart) | 
+| Transformer-big (2017) | 42.94 | 37.83 | [Attention is all you need](https://arxiv.org/abs/1706.03762) | [Link](https://github.com/pytorch/fairseq/tree/main/examples/translation) | 
+| Transformer-base (2017) | 42.12 | 37.19 | [Attention is all you need](https://arxiv.org/abs/1706.03762) | [Link](https://github.com/pytorch/fairseq/tree/main/examples/translation) |
+
+### IWSLT2015 Dataset
+* Dataset is from [The IWSLT 2015 Evaluation Campaign](http://workshop2015.iwslt.org/downloads/proceeding.pdf) with 150K sentence pairs, also be obtained from [https://github.com/tensorflow/nmt](https://github.com/tensorflow/nmt).
 
 #### English-to-Vietnamese
 `tst2015` is used for test
@@ -69,8 +95,23 @@
 | Provilkov et al. (2019) | 32.99 (uncased) | [BPE-Dropout: Simple and Effective Subword Regularization](https://arxiv.org/abs/1910.13267) | |
 | Kudo (2018) | 26.31 | [Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates](https://arxiv.org/abs/1804.10959) | | 
 
-
 ## Named entity recognition
+### [PhoNER_COVID19](https://github.com/VinAIResearch/PhoNER_COVID19)
+* A named entity recognition dataset for Vietnamese with 10 newly-defined entity types in the context of the COVID-19 pandemic. Data is extracted from news articles and manually annotated. In total, there are 34 984 entities over 10 027 sentences.
+* Training set: 5027 sentences
+* Development set: 2000 sentences
+* Test set: 3000 sentences
+
+| Model           | F1  |  Paper | Code | Note | 
+| ------------- | :-----:| --- | --- | --- | 
+| PhoBERT-large (2020) | 94.5 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) | [Official](https://github.com/VinAIResearch/PhoBERT) | 
+| PhoBERT-base (2020) | 94.2 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) | [Official](https://github.com/VinAIResearch/PhoBERT) | 
+| XLM-R-large (2019) | 93.8 | [Unsupervised Cross-lingual Representation Learning at Scale](https://aclanthology.org/2020.acl-main.747/) | [Official](https://github.com/facebookresearch/XLM) | 
+| XLM-R-base (2019) | 92.5 | [Unsupervised Cross-lingual Representation Learning at Scale](https://aclanthology.org/2020.acl-main.747/) | [Official](https://github.com/facebookresearch/XLM) | 
+| BiLSTM-CRF + CNN-char (2016) + Word Segmentation | 91 | [End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF](http://www.aclweb.org/anthology/P16-1101) | [Link](https://github.com/UKPLab/emnlp2017-bilstm-cnn-crf/) | Text are automatically word-segmented using [RDRSegmenter](https://github.com/vncorenlp/VnCoreNLP) |
+| BiLSTM-CRF + CNN-char  (2016) | 90.6 | [End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF](http://www.aclweb.org/anthology/P16-1101) | [Link](https://github.com/UKPLab/emnlp2017-bilstm-cnn-crf/) | No word segmentation |
+
+### VLSP
 * 16,861 sentences for training and development from the VLSP 2016 NER shared task:
   *  14,861 sentences are used for training.
   *  2k sentences are used for development.
@@ -83,6 +124,7 @@
 | Model           | F1  |  Paper | Code | Note | 
 | ------------- | :-----:| --- | --- | --- | 
 | PhoBERT-large (2020) | 94.7 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) | [Official](https://github.com/VinAIResearch/PhoBERT) | 
+| PhoNLP (2021) | 94.41 | [PhoNLP: A joint multi-task learning model for Vietnamese part-of-speech tagging, named entity recognition and dependency parsing](https://aclanthology.org/2021.naacl-demos.1.pdf) | [Official](https://github.com/VinAIResearch/PhoNLP) |
 | vELECTRA (2020) | 94.07 | [Improving Sequence Tagging for Vietnamese Text Using Transformer-based Neural Models](https://arxiv.org/abs/2006.15994) | [Official](https://github.com/fpt-corp/viBERT) |
 | PhoBERT-base (2020) | 93.6 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) |  [Official](https://github.com/VinAIResearch/PhoBERT) | 
 | VnCoreNLP (2018) [1] | 91.30 | [VnCoreNLP: A Vietnamese Natural Language Processing Toolkit](http://aclweb.org/anthology/N18-5012) | [Official](https://github.com/vncorenlp/VnCoreNLP) | Used ETNLP embeddings |
@@ -96,6 +138,7 @@
 * [1] denotes that scores are reported in  "[ETNLP: a visual-aided systematic approach to select pre-trained embeddings for a downstream task](https://arxiv.org/abs/1903.04433)"
 * [2] denotes that BiLSTM-CRF-based scores are reported in  "[VnCoreNLP: A Vietnamese Natural Language Processing Toolkit](http://aclweb.org/anthology/N18-5012)"
 
+
 ## Part-of-speech tagging 
 
 * 27,870 sentences for training and development from the VLSP 2013 POS tagging shared task:
@@ -107,6 +150,7 @@
 | ------------- | :-----:| --- | --- | 
 | PhoBERT-large (2020) | 96.8 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) | [Official](https://github.com/VinAIResearch/PhoBERT) |
 | vELECTRA (2020) | 96.77 | [Improving Sequence Tagging for Vietnamese Text Using Transformer-based Neural Models](https://arxiv.org/abs/2006.15994) | [Official](https://github.com/fpt-corp/viBERT) |
+| PhoNLP (2021) | 96.76 | [PhoNLP: A joint multi-task learning model for Vietnamese part-of-speech tagging, named entity recognition and dependency parsing](https://aclanthology.org/2021.naacl-demos.1.pdf) | [Official](https://github.com/VinAIResearch/PhoNLP) |
 | PhoBERT-base (2020) | 96.7 | [PhoBERT: Pre-trained language models for Vietnamese](https://arxiv.org/abs/2003.00744) |  [Official](https://github.com/VinAIResearch/PhoBERT) | 
 | jointWPD (2018) | 95.97 | [A neural joint model for Vietnamese word segmentation, POS tagging and dependency parsing](https://arxiv.org/abs/1812.11459) | | 
 | VnCoreNLP-VnMarMoT (2017) | 95.88 | [From Word Segmentation to POS Tagging for Vietnamese](http://aclweb.org/anthology/U17-1013) | [Official](https://github.com/datquocnguyen/vnmarmot) | 
@@ -118,6 +162,20 @@
 
 * Result for jPTDP-v2 is reported in "[A neural joint model for Vietnamese word segmentation, POS tagging and dependency parsing](https://arxiv.org/abs/1812.11459)." 
 * Results for BiLSTM-CRF-based models and RDRPOSTagger are reported in  "[From Word Segmentation to POS Tagging for Vietnamese](http://aclweb.org/anthology/U17-1013)."
+
+## Semantic parsing
+### [ViText2SQL](https://github.com/VinAIResearch/ViText2SQL)
+* The first public large-scale Text-to-SQL semantic parsing dataset for Vietnamese, consisting of about 10K question and SQL query pairs.
+* Training set:  6831 question and query pairs 
+* Development set: 954 question and query pairs 
+* Test set: 1906 question and query pairs 
+
+
+| Model           | Exact Match Accuracy  |  Paper | Code | Note |
+| ------------- | :-----:| --- | --- | --- |
+| IRNet (2019) | 53.2 | [A Pilot Study of Text-to-SQL Semantic Parsing for Vietnamese](https://aclanthology.org/2020.findings-emnlp.364/) | [Link](https://github.com/microsoft/IRNet) | Using [PhoBERT](https://aclanthology.org/2020.findings-emnlp.92/) as encoder |
+| EditSQL (2019) |  52.6 | [A Pilot Study of Text-to-SQL Semantic Parsing for Vietnamese](https://aclanthology.org/2020.findings-emnlp.364/) | [Link](https://github.com/ryanzhumich/editsql) | Using [PhoBERT](https://aclanthology.org/2020.findings-emnlp.92/) as encoder |
+
 
 ## Word segmentation 
 
